@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +15,13 @@ namespace Zadanie_SK_2
         public static int sd1 = 2; 
         public static int sd2 = 1;
         private static List<ServerModel> servers = new List<ServerModel>();
+
+        private static string ServerDNS1Path = @"D:\STUDIA\Sk\ServerDNS1\requests.txt";
+        private static string ServerDNS2Path = @"D:\STUDIA\Sk\ServerDNS2\requests.txt";
+        private static string ServerDNS3Path = @"D:\STUDIA\Sk\ServerDNS3\requests.txt";
+        private static string ServerHTTP1Path = @"D:\STUDIA\Sk\ServerHTTP1\requests.txt";
+        private static string ServerHTTP2Path = @"D:\STUDIA\Sk\ServerHTTP2\requests.txt";
+        
         
         
         static int GetHttpRequestTime()
@@ -95,27 +104,66 @@ namespace Zadanie_SK_2
              });
             }
             Shuffle(requests);
-            
-            var tasks = new Task[]
+            List<Process> serverProcesses = new List<Process>();
+            Process serverDns1Process = new Process();
+            Process serverDns2Process = new Process();
+            Process serverDns3Process = new Process();
+            Process serverHttp1Process = new Process();
+            Process serverHttp2Process = new Process();
+            serverDns1Process.StartInfo.FileName = @"D:\STUDIA\Sk\ServerHTTP2\ServerHTTP2\bin\Debug\net5.0\ServerHTTP2.exe";
+            serverDns2Process.StartInfo.FileName = @"D:\STUDIA\Sk\ServerHTTP1\ServerHTTP1\bin\Debug\net5.0\ServerHTTP1.exe";
+            serverDns3Process.StartInfo.FileName = @"D:\STUDIA\Sk\ServerDNS1\ServerDNS1\bin\Debug\net5.0\ServerDNS1.exe";
+            serverHttp1Process.StartInfo.FileName = @"D:\STUDIA\Sk\ServerDNS2\ServerDNS2\bin\Debug\net5.0\ServerDNS2.exe";
+            serverHttp2Process.StartInfo.FileName = @"D:\STUDIA\Sk\ServerDNS3\ServerDNS3\bin\Debug\net5.0\ServerDNS3.exe";
+            serverProcesses.Add(serverDns1Process);
+            serverProcesses.Add(serverDns2Process);
+            serverProcesses.Add(serverDns2Process);
+            serverProcesses.Add(serverHttp1Process);
+            serverProcesses.Add(serverHttp2Process);
+            foreach (var process in serverProcesses)
             {
-                ServerDNS1(),
-                ServerDNS2(),
-                ServerDNS3(),
-                ServerHTTP1(),
-                ServerHTTP2()
-            };
-            
+                process.Start();
+            }
             
             foreach (var request in requests)
             {
                 Thread.Sleep(1);
                 var server = LoadBalancer(request);
-                server.RequestsQueue.Add(request);
-                await Task.WhenAll(tasks);
+                if (server.Id == 1)
+                {
+                    QueueRequest(ServerDNS1Path, request.Id.ToString(), request.IsDns.ToString());
+                }
+                else if (server.Id == 2)
+                {
+                    QueueRequest(ServerDNS2Path, request.Id.ToString(), request.IsDns.ToString());
+                }
+                else if (server.Id == 3)
+                {
+                    QueueRequest(ServerDNS3Path, request.Id.ToString(), request.IsDns.ToString());
+                }
+                else if (server.Id == 4)
+                {
+                    QueueRequest(ServerHTTP1Path, request.Id.ToString(), request.IsDns.ToString());
+                }
+                else if (server.Id == 5)
+                {
+                    QueueRequest(ServerHTTP2Path, request.Id.ToString(), request.IsDns.ToString());
+                }
             }
 
+            foreach (var process in serverProcesses)
+            {
+                process.Kill();
+            }
         }
-
+        
+        public static void QueueRequest(string path, string requestId, string isDNS)
+        {
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine($"{requestId},{isDNS}");
+            }
+        }
         public static ServerModel LoadBalancer(RequestModel request)
         {
             if (request.IsDns)
