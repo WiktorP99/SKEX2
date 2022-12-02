@@ -1,0 +1,16 @@
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\Zadanie_SK_2.exe
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\Zadanie_SK_2.deps.json
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\Zadanie_SK_2.runtimeconfig.json
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\Zadanie_SK_2.runtimeconfig.dev.json
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\Zadanie_SK_2.dll
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\ref\Zadanie_SK_2.dll
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\bin\Debug\net5.0\Zadanie_SK_2.pdb
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.csproj.AssemblyReference.cache
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.GeneratedMSBuildEditorConfig.editorconfig
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.AssemblyInfoInputs.cache
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.AssemblyInfo.cs
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.csproj.CoreCompileInputs.cache
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.dll
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\ref\Zadanie_SK_2.dll
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.pdb
+D:\STUDIA\Sk\Zadanie_SK_2\Zadanie_SK_2\obj\Debug\net5.0\Zadanie_SK_2.genruntimeconfig.cache
